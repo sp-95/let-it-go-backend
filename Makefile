@@ -57,4 +57,17 @@ help:  ## Show this help
 	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "${TARGET_COLOR}%-30s${RESET} %s\n", $$1, $$2}'
 
 
+# Main Commands
+.PHONY: info build run deploy doc
+
+run: ## Run the Django Server
+	python -m let_it_go_backend.manage runserver
+
+migrations: ## Create migration files
+	python -m let_it_go_backend.manage makemigrations
+
+migrate: ## Apply migrations
+	python -m let_it_go_backend.manage migrate
+
+
 # vim:noexpandtab:ts=8:sw=8:ai
