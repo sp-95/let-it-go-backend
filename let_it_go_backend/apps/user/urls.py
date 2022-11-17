@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from let_it_go_backend.apps.user import views
 
 router = DefaultRouter()
-router.register(r"", views.UserViewSet)
+router.register("", views.UserViewSet)
 
 
 urlpatterns = [
