@@ -69,5 +69,9 @@ migrations: ## Create migration files
 migrate: ## Apply migrations
 	python -m let_it_go_backend.manage migrate
 
+app: ## Create a django app
+	mkdir -p let_it_go_backend/apps/$(name)
+	python -m let_it_go_backend.manage startapp $(name) let_it_go_backend/apps/$(name)
+
 
 # vim:noexpandtab:ts=8:sw=8:ai
