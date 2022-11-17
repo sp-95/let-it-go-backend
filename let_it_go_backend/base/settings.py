@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     # Third Party Apps
     "rest_framework",
     # Local Apps
-    "let_it_go_backend.apps.auth",
+    "let_it_go_backend.apps.group",
+    "let_it_go_backend.apps.user",
 ]
 
 MIDDLEWARE = [

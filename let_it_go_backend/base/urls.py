@@ -21,7 +21,9 @@ urlpatterns = [
 ]
 
 api_urlpatterns = [
-    path("auth/", include("let_it_go_backend.apps.auth.urls")),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("users/", include("let_it_go_backend.apps.user.urls")),
+    path("groups/", include("let_it_go_backend.apps.group.urls")),
 ]
 
 # API v1 URL endpoints
