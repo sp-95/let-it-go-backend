@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third Party Apps
     "rest_framework",
+    "rest_framework.authtoken",
     # Local Apps
     "let_it_go_backend.apps.auth",
     "let_it_go_backend.apps.group",
