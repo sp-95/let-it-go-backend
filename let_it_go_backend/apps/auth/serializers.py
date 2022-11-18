@@ -13,16 +13,16 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
         validators=[validate_password],
         style={"input_type": "password"},
     )
-    re_password = serializers.CharField(
+    confirm_password = serializers.CharField(
         write_only=True, required=True, style={"input_type": "password"}
     )
 
     class Meta:
         model = User
-        fields = ("old_password", "password", "re_password")
+        fields = ("old_password", "password", "confirm_password")
 
     def validate(self, attrs):
-        if attrs["password"] != attrs["re_password"]:
+        if attrs["password"] != attrs["confirm_password"]:
             raise serializers.ValidationError(
                 {"password": "Password fields don't match"}
             )
