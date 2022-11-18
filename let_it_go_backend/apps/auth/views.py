@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from let_it_go_backend.apps.auth.serializers import PasswordChangeSerializer
 
 
-class LoginView(ObtainAuthToken):
+class SignInView(ObtainAuthToken):
     renderer_classes = (renderers.JSONRenderer, renderers.BrowsableAPIRenderer)
 
 
