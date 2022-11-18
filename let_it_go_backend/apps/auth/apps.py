@@ -6,3 +6,6 @@ class AuthConfig(AppConfig):
     name = "let_it_go_backend.apps.auth"
     label: str = "api_auth"
     verbose_name = "Authentication"
+
+    def ready(self):
+        import let_it_go_backend.apps.auth.signals  # noqa: F401
