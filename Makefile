@@ -66,7 +66,7 @@ run: ## Run the Django Server
 migrations: ## Create migration files
 	python -m let_it_go_backend.manage makemigrations
 
-migrate: ## Apply migrations
+apply-migrations: ## Apply migrations
 	python -m let_it_go_backend.manage migrate
 
 app: ## Create a django app
