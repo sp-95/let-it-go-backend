@@ -403,3 +403,6 @@ cython_debug/
 
 # Migrations Files
 **/migrations
+
+# Sample data
+sample.json
