@@ -1,4 +1,4 @@
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
@@ -11,9 +11,6 @@ class Command(BaseCommand):
             user, created = User.objects.get_or_create(username="admin")
             if created:
                 user.set_password("admin")
-
-                admin_group = Group.objects.get(name="Admin")
-                user.groups.add(admin_group)
 
                 user.is_staff = True
                 user.is_superuser = True
