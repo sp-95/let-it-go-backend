@@ -60,13 +60,19 @@ help:  ## Show this help
 # Main Commands
 .PHONY: info build run deploy doc
 
+install:  ## Install dependencies
+	pip install -e .
+
+install-dev:  ## Install dev dependencies
+	pip install -e ".[dev]"
+
 run: ## Run the Django Server
 	python -m let_it_go_backend.manage runserver
 
 migrations: ## Create migration files
 	python -m let_it_go_backend.manage makemigrations
 
-migrate: ## Apply migrations
+apply-migrations: ## Apply migrations
 	python -m let_it_go_backend.manage migrate
 
 app: ## Create a django app
