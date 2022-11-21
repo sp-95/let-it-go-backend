@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "drf_yasg",
     "django_rest_passwordreset",
+    "django_filters",
     # Local Apps
     "let_it_go_backend.apps.auth",
     "let_it_go_backend.apps.core",
