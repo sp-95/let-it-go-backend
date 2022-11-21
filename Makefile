@@ -69,7 +69,7 @@ install:  ## Install dependencies
 install-dev:  ## Install dev dependencies
 	pip install -e ".[dev]"
 
-run: ## Run the Django Server
+server: ## Run the Django Server
 	python -m let_it_go_backend.manage runserver
 
 migrations: ## Create migration files
