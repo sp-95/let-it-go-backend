@@ -58,7 +58,10 @@ help:  ## Show this help
 
 
 # Main Commands
-.PHONY: info build run deploy doc
+.PHONY: init install install-dev run migrations apply-migrations app
+
+init: migrations apply-migrations install-dev  ## Initialize the database
+	python -m let_it_go_backend.manage create_default_admin
 
 install:  ## Install dependencies
 	pip install -e .
