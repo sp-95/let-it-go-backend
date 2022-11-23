@@ -39,7 +39,7 @@ POUND = \#
 
 .DEFAULT_GOAL := help
 
-colors:  ## Show all the colors
+colors:  ## Show available colors
 	@echo "${BLACK}BLACK${RESET}"
 	@echo "${RED}RED${RESET}"
 	@echo "${GREEN}GREEN${RESET}"
@@ -49,7 +49,7 @@ colors:  ## Show all the colors
 	@echo "${BLUE}BLUE${RESET}"
 	@echo "${WHITE}WHITE${RESET}"
 
-help:  ## Show this help
+help:  ## List available commands
 	@echo ""
 	@echo "    ${BLACK}:: ${RED}Let-it-go-backend Make Commands${RESET} ${BLACK}::${RESET}"
 	@printf -- "${BLACK}-%.0s${RESET}" {1..88}
@@ -58,10 +58,12 @@ help:  ## Show this help
 
 
 # Main Commands
-.PHONY: init install install-dev run migrations apply-migrations app
+PROJECT_SRC = let_it_go_backend
+
+.PHONY: init install install-dev server migrations apply-migrations app
 
 init: migrations apply-migrations install-dev  ## Initialize the database
-	python -m let_it_go_backend.manage create_default_admin
+	python -m $(PROJECT_SRC).manage create_default_admin
 
 install:  ## Install dependencies
 	pip install -e .
@@ -69,18 +71,18 @@ install:  ## Install dependencies
 install-dev:  ## Install dev dependencies
 	pip install -e ".[dev]"
 
-server: ## Run the Django Server
-	python -m let_it_go_backend.manage runserver
+server:  ## Run the Django Server
+	python -m $(PROJECT_SRC).manage runserver
 
-migrations: ## Create migration files
-	python -m let_it_go_backend.manage makemigrations
+migrations:  ## Create migration files
+	python -m $(PROJECT_SRC).manage makemigrations
 
-apply-migrations: ## Apply migrations
-	python -m let_it_go_backend.manage migrate
+apply-migrations:  ## Apply migrations
+	python -m $(PROJECT_SRC).manage migrate
 
 app: ## Create a django app
-	mkdir -p let_it_go_backend/apps/$(name)
-	python -m let_it_go_backend.manage startapp $(name) let_it_go_backend/apps/$(name)
+	mkdir -p $(PROJECT_SRC)/apps/$(name)
+	python -m $(PROJECT_SRC).manage startapp $(name) $(PROJECT_SRC)/apps/$(name)
 
 
 # vim:noexpandtab:ts=8:sw=8:ai
