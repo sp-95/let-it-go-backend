@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 
-from let_it_go_backend.apps.core.permissions import UserPermission
-from let_it_go_backend.apps.user import serializers
+from let_it_go_backend.apps.user import permissions, serializers
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -12,4 +11,4 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all().order_by("-date_joined")
     serializer_class = serializers.UserSerializer
-    permission_classes = [UserPermission]
+    permission_classes = [permissions.UserPermission]
