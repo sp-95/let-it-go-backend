@@ -61,6 +61,7 @@ api_urlpatterns = [
     path("users/", include("let_it_go_backend.apps.user.urls")),
     path("groups/", include("let_it_go_backend.apps.group.urls")),
     path("products/", include("let_it_go_backend.apps.product.urls")),
+    path("categories/", include("let_it_go_backend.apps.category.urls")),
 ]
 
 urlpatterns += [

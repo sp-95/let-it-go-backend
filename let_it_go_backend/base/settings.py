@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "let_it_go_backend.apps.user",
     "let_it_go_backend.apps.group",
     "let_it_go_backend.apps.product",
+    "let_it_go_backend.apps.category",
 ]
 
 MIDDLEWARE = [
