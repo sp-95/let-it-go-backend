@@ -18,7 +18,7 @@ class ProductPermission(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        if obj.user == request.user:
+        if obj.owner == request.user:
             return True
 
         return False

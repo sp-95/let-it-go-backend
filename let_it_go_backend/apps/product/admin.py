@@ -13,7 +13,7 @@ class ProductAdmin(ImportExportModelAdmin):
     list_filter = (
         "category",
         "condition",
-        "user",
+        "owner",
         ("created_date", admin.DateFieldListFilter),
         ("modified_date", admin.DateFieldListFilter),
     )
