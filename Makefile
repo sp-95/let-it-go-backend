@@ -80,6 +80,8 @@ migrations:  ## Create migration files
 apply-migrations:  ## Apply migrations
 	python -m $(PROJECT_SRC).manage migrate
 
+migrate: migrations apply-migrations ## Create migrations and apply them
+
 app: ## Create a django app
 	mkdir -p $(PROJECT_SRC)/apps/$(name)
 	python -m $(PROJECT_SRC).manage startapp $(name) $(PROJECT_SRC)/apps/$(name)
