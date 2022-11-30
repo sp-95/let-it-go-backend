@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from let_it_go_backend.apps.category.models import Category
 from let_it_go_backend.apps.core.models import AbstractBaseModel
 
 
@@ -16,7 +17,7 @@ class Product(AbstractBaseModel):
 
     title = models.CharField(max_length=255)
     description = models.TextField()
-    category = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(
         decimal_places=2, max_digits=12, validators=[MinValueValidator(0)]
     )
