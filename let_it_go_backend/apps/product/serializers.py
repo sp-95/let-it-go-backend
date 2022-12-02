@@ -13,3 +13,13 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         exclude = ["owner"]
+
+    def run_validation(self, data=...):
+        image = data.get("image")
+        if image and isinstance(image, str):
+            request = self.context.get("request")
+            current_image = Product.objects.get(pk=self.initial_data["id"])
+            current_image_url = request.build_absolute_uri(current_image.image.url)
+            if current_image_url == image:
+                data.pop("image", None)
+        return super().run_validation(data)
