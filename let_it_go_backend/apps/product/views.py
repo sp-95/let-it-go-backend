@@ -16,5 +16,5 @@ class ProductViewSet(viewsets.ModelViewSet):
     search_fields = ["title", "description", "category"]
 
     def perform_create(self, serializer):
-        category = Category.objects.get(pk=self.request.data["category"])
+        category = Category.objects.get(id=self.request.data["category"])
         serializer.save(category=category, owner=self.request.user)
