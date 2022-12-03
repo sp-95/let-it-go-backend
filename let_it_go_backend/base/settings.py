@@ -95,11 +95,12 @@ WSGI_APPLICATION = "let_it_go_backend.base.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "HOST": config("POSTGRES_HOST"),
-        "PORT": config("POSTGRES_PORT", cast=int),
-        "USER": config("POSTGRES_USER"),
-        "PASSWORD": config("POSTGRES_PASSWORD"),
+        "ENGINE": "django.db.backends.sqlite3",
+        # "ENGINE": "django.db.backends.postgresql_psycopg2",
+        # "HOST": config("POSTGRES_HOST"),
+        # "PORT": config("POSTGRES_PORT", cast=int),
+        # "USER": config("POSTGRES_USER"),
+        # "PASSWORD": config("POSTGRES_PASSWORD"),
         "NAME": config("POSTGRES_DB"),
     }
 }
