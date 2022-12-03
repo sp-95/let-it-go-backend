@@ -13,6 +13,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         exclude = ["owner"]
+        read_only_fields = ["verified"]
 
     def run_validation(self, data=...):
         image = data.get("image")
@@ -23,3 +24,9 @@ class ProductSerializer(serializers.ModelSerializer):
             if current_image_url == image:
                 data.pop("image", None)
         return super().run_validation(data)
+
+
+class VerificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ["id", "verified"]

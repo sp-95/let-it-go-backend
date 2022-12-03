@@ -23,6 +23,7 @@ class Product(AbstractBaseModel):
     )
     image = models.ImageField(null=True, upload_to="product/images")
     condition = models.IntegerField(choices=Condition.choices, default=Condition.GOOD)
+    verified = models.BooleanField(default=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
