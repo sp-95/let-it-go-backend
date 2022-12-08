@@ -26,6 +26,10 @@ class ProductSerializer(serializers.ModelSerializer):
         return super().run_validation(data)
 
 
+class ContactSerializer(serializers.Serializer):
+    pass
+
+
 class VerificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product

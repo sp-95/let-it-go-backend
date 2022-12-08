@@ -1,0 +1,13 @@
+Hi {{ name }},
+
+A potential buyer, {{ buyer_first_name }} {{ buyer_last_name }}, has requested to contact you for the product {{ product }} that you posted in {{ customer_portal }}.
+
+The contact information is as given below:
+  First Name: {{ buyer_first_name }}
+  Last Name: {{ buyer_last_name }}
+  Email ID: {{ buyer_email }}
+
+Please feel free to reach out to them to discuss further processing details. Please make sure to take down the product from {{ customer_portal }} once the transaction has been finalized.
+
+Regards,
+The {{ customer_portal }} Team

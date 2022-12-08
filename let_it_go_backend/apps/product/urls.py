@@ -8,7 +8,8 @@ router.register("", views.ProductViewSet)
 
 
 urlpatterns = [
-    path("verify/<int:id>/", views.VerificationView.as_view(), name="verify_product"),
+    path("<uuid:id>/contact/", views.ContactView.as_view(), name="contact_seller"),
+    path("<uuid:id>/verify/", views.VerificationView.as_view(), name="verify_product"),
 ]
 
 urlpatterns += router.urls
