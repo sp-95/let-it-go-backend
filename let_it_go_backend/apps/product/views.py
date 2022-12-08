@@ -26,8 +26,12 @@ class ProductViewSet(ModelViewSet):
     search_fields = ["title", "description", "category"]
 
     def perform_create(self, serializer):
-        category = Category.objects.get(id=self.request.data["category"])
+        category = Category.objects.get(id=serializer.initial_data["category"])
         serializer.save(category=category, owner=self.request.user)
+
+    def perform_update(self, serializer):
+        category = Category.objects.get(id=serializer.initial_data["category"])
+        serializer.save(category=category)
 
 
 class ContactView(UpdateAPIView):
