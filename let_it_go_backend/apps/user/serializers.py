@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
@@ -52,5 +55,31 @@ class UserSerializer(serializers.ModelSerializer):
 
         user.set_password(validated_data["password"])
         user.save()
+
+        # TODO: Move this to a different thread
+        # create context for the email template
+        context = {
+            "name": user.first_name or user.email,
+            "username": user.username,
+            "customer_portal": "Let It Go",
+        }
+
+        # render email text
+        email_html_message = render_to_string(
+            "email/user_account_creation.html", context
+        )
+        email_plaintext_message = render_to_string(
+            "email/user_account_creation.txt", context
+        )
+
+        # send an e-mail to the user
+        msg = EmailMultiAlternatives(
+            subject=f"Account created for the {context['customer_portal']} App",
+            body=email_plaintext_message,
+            from_email=settings.EMAIL_HOST_USER,
+            to=[user.email],
+        )
+        msg.attach_alternative(email_html_message, "text/html")
+        msg.send()
 
         return user

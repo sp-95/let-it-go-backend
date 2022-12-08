@@ -1,0 +1,6 @@
+Welcome {{ name }},
+
+Your {{ customer_portal }} account has been successfully created.
+
+Regards,
+The {{ customer_portal }} Team
