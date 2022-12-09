@@ -3,7 +3,12 @@ let-it-go-backend
 =================
 
 
-    Add a short description here!
+    A web application for an online thrift store
 
 
-A longer description of your project goes here...
+Getting Started
+---------------
+
+.. code-block: bash
+    make init
+    make server
