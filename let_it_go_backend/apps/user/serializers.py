@@ -21,6 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(
         write_only=True, required=True, style={"input_type": "password"}
     )
+    is_admin = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = User
@@ -31,6 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
+            "is_admin",
         )
         extra_kwargs = {
             "first_name": {"required": True},
@@ -44,6 +46,11 @@ class UserSerializer(serializers.ModelSerializer):
             )
 
         return attrs
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["is_admin"] = instance.is_staff
+        return data
 
     def create(self, validated_data):
         user = User.objects.create(
