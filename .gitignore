@@ -401,8 +401,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
+### Project Specific ###
+
 # Migrations Files
 **/migrations
 
 # Sample data
 sample.json
+
+let_it_go

@@ -1,8 +1,10 @@
+from decouple import config
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.dispatch import receiver
 from django.template.loader import render_to_string
-from django.urls import reverse
+
+# from django.urls import reverse
 from django_rest_passwordreset.signals import reset_password_token_created
 
 
@@ -25,12 +27,14 @@ def send_mail_on_reset_password(
         "name": reset_password_token.user.first_name
         or reset_password_token.user.username,
         "customer_portal": "Let It Go",
-        "reset_password_url": "{}?token={}".format(
-            instance.request.build_absolute_uri(
-                reverse("password_reset:reset-password-confirm")
-            ),
-            reset_password_token.key,
-        ),
+        # "reset_password_url": "{}?token={}".format(
+        #     instance.request.build_absolute_uri(
+        #         reverse("password_reset:reset-password-confirm")
+        #     ),
+        #     reset_password_token.key,
+        # ),
+        "reset_password_url": config("FRONTEND_URL"),
+        "reset_password_token": reset_password_token.key,
     }
 
     # render email text
