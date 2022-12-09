@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from decouple import config
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -33,7 +35,7 @@ def send_mail_on_reset_password(
         #     ),
         #     reset_password_token.key,
         # ),
-        "reset_password_url": config("FRONTEND_URL"),
+        "reset_password_url": f"{Path(config('REACT_APP_BASE_URL'), 'reset')}",
         "reset_password_token": reset_password_token.key,
     }
 
