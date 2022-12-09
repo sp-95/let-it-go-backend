@@ -24,7 +24,7 @@ class ProductViewSet(ModelViewSet):
     permission_classes = [ProductPermission]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ["category", "condition", "owner", "verified"]
-    search_fields = ["title", "description", "category"]
+    search_fields = ["title", "description"]
 
     def perform_create(self, serializer):
         category = Category.objects.get(id=serializer.initial_data["category"])
